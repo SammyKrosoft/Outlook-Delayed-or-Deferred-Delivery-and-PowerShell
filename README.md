@@ -92,3 +92,10 @@ To change the default account:
 ```powershell
 $Mail.SendUsingAccount = $ol.Session.Accounts | where {$_.DisplayName -eq $FromMail}
 ```
+
+References:
+[Create Outlook email draft using PowerShell](https://stackoverflow.com/questions/1453723/create-outlook-email-draft-using-powershell)
+
+[Delay or schedule sending email messages](https://support.microsoft.com/en-us/office/delay-or-schedule-sending-email-messages-026af69f-c287-490a-a72f-6c65793744ba)
+
+
