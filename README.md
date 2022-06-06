@@ -102,4 +102,13 @@ References:
 
 [Delay or schedule sending email messages](https://support.microsoft.com/en-us/office/delay-or-schedule-sending-email-messages-026af69f-c287-490a-a72f-6c65793744ba)
 
+To use an OFT (Outlook Offline Template)
+=========================================
 
+```powershell
+$outlook = New-Object -comObject Outlook.Application 
+$mail = $outlook.Session.OpenSharedItem("C:\Temp\tmp.oft")
+$mail.Forward()
+$mail.Recipients.Add("foo@mail.com") 
+$mail.send()
+```
