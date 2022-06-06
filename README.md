@@ -106,9 +106,18 @@ To use an OFT (Outlook Offline Template)
 =========================================
 
 ```powershell
-$outlook = New-Object -comObject Outlook.Application 
-$mail = $outlook.Session.OpenSharedItem("C:\Temp\tmp.oft")
-$mail.Forward()
-$mail.Recipients.Add("DistributionList001@contoso.ca") 
-$mail.send()
+ $PathToOft = "c:\temp\Bulkmessage001.oft"
+ $mailboxes = "DistributionList001@contoso.ca"
+    
+ $outlook = New-Object -comObject Outlook.Application 
+ $mail = $Outlook.CreateItemFromTemplate("$PathToOft")
+    
+ foreach ($mailbox in $mailboxes){
+        
+     $mail.Forward()
+     $mail.Recipients.Add($mailbox)
+     $mail.To = $mailbox
+     $mail.Save()
+     $mail.send()
+ }
 ```
