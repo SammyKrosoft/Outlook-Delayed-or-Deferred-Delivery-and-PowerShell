@@ -39,7 +39,10 @@ $mail = $ol.CreateItem(0)
 $mail | Get-Member
 ```
 
-One property is DeferredDeliveryTime. You can set it like this:
+One property is DeferredDeliveryTime. 
+You can find info on this link as well [MailItem.DeferredDeliveryTime property (Outlook)](https://docs.microsoft.com/en-us/office/vba/api/outlook.mailitem.deferreddeliverytime)
+
+You can set it like this:
 
 ```powershell
 #Stay in the outbox until this date and time
