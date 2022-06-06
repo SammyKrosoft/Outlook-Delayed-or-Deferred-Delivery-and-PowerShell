@@ -43,7 +43,7 @@ One property is DeferredDeliveryTime. You can set it like this:
 
 ```powershell
 #Stay in the outbox until this date and time
-$mail.DeferredDeliveryTime = "11/2/2013 10:50:00 AM"
+$mail.DeferredDeliveryTime = "6/6/2022 10:50:00 AM"
 ```
 
 Or:
@@ -56,6 +56,7 @@ $mail.DeferredDeliveryTime = $date
 ```
 
 Another example, full script:
+===============================
 
 ```powershell
 $ol = New-Object -comObject Outlook.Application 
@@ -63,20 +64,20 @@ $ns = $ol.GetNameSpace("MAPI")
 
 # call the save method yo dave the email in the drafts folder
 $mail = $ol.CreateItem(0)
-$null = $Mail.Recipients.Add("xxxx@serverdomain.es")  
+$null = $Mail.Recipients.Add("DistributionList001@contoso.ca")  
 $Mail.Subject = "PS1 Script TestMail"  
 $Mail.Body = "  Test Mail  "
 
 $date = Get-Date
-$date = $date.AddMinutes(2)
-$Mail.DeferredDeliveryTime = $date #"2/11/2013 10:50:00 AM"
+$date = $date.AddMinutes(10)
+$Mail.DeferredDeliveryTime = $date #"06/06/2022 10:50:00 AM"
 
 $Mail.save()
 
 # get it back from drafts and update the body
 $drafts = $ns.GetDefaultFolder($olFolderDrafts)
 $draft = $drafts.Items | where {$_.subject -eq 'PS1 Script TestMail'}
-$draft.body += "`n foo bar"
+$draft.body += "`n adding text"
 $draft.save()
 
 $inspector = $draft.GetInspector  
