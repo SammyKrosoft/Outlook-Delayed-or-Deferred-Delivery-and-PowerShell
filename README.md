@@ -109,6 +109,6 @@ To use an OFT (Outlook Offline Template)
 $outlook = New-Object -comObject Outlook.Application 
 $mail = $outlook.Session.OpenSharedItem("C:\Temp\tmp.oft")
 $mail.Forward()
-$mail.Recipients.Add("foo@mail.com") 
+$mail.Recipients.Add("DistributionList001@contoso.ca") 
 $mail.send()
 ```
