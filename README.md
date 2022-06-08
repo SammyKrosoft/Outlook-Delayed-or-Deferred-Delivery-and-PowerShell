@@ -121,3 +121,68 @@ To use an OFT (Outlook Offline Template)
      $mail.send()
  }
 ```
+
+Putting all the above together: Script sample to send an e-mail from a .MSG or .OFT template to several recipients (DLs for example), adding 5 minutes between each sending.
+======================================================================================================================================================
+
+```powershell
+cls
+# Previously "hard coded" the path to the .msg or .oft file in a variable. Instead used Windows.Forms.OpenFileDialog to select the file.
+# $MSGFile = "$($env:UserProfile)\Desktop\AutomatedMessage.msg"
+
+# The below routine is to use Windows open file dialog to select a file to use as the broadcast message.
+#Loading Windows Form "assembly" (=library)
+Add-Type -AssemblyName System.Windows.Forms
+# Store file browser dialog properties (like initial directory,...)
+#$FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{ InitialDirectory = [Environment]::GetFolderPath('Documents') }
+$FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{ InitialDirectory = "$($env:USERPROFILE)\Documents" }
+# Make the box visible
+$null = $FileBrowser.ShowDialog()
+#Store the selected file complete path in our variable
+$MSGFile = $FileBrowser.FileName
+
+
+# Create an Outlook application com object to manipulate Outlook in PowerShell
+$Outlook = New-Object -ComObject Outlook.Application
+
+# Put list of recipients to send broadcast messages to, spaced by several minutes.
+$Recipients = "DL001@contoso.ca", "DL002@contoso.ca","DL003@contoso.ca"
+
+$date = Get-Date
+$counter = 0
+Foreach ($recipient in $Recipients){
+    $Counter++
+    write-Host "---------------------- Message $counter ------------------------------" -BackgroundColor Blue -ForegroundColor Yellow
+    Write-Host "Message sent to      :     $recipient" 
+    Write-Host "Will be sent at      :     $date" 
+    Write-Host "With template        :     $MSGFile" 
+    write-Host "----------------------------------------------------------------------"
+
+    # Outlook COM object has a couple of functions/methods we can use to create a new message
+    # We can use $Outlook.Session.OpenSharedItem(<path to MSG or OFT file>)
+    # We can use $Outlook.CreateItemFromTemplate(<path to MSG or OFT file>)
+    # NOTE: it looks like if we use $Outlook.Session.OpenSharedItem() method, Outlook automatically creates and saves a copy of the message on the DRAFT folder
+    # If we want to avoid the "Draft" being created from OpenSharedItem() we can use the $Outlook.CreateItemFromTemplate function/method instead:
+    #$Mail = $Outlook.Session.OpenSharedItem($MSGFile)
+    $mail = $Outlook.CreateItemFromTemplate("$MSGFile")
+
+    # Not sure why use $Mail.Forward() method at this point - to be researched here
+    $Mail.Forward() | Out-Null
+    # Adding recipient to the "template" we use
+    $Mail.Recipients.Add($recipient) | Out-Null
+
+    #Stay in the outbox until this date and time
+    $Mail.DeferredDeliveryTime = $date 
+
+    #$mail.DeferredDeliveryTime = "05/13/2022 12:55:00 PM"
+    # Hit Send (mail stay in the Outbox until above date)
+    $Mail.Send() 
+
+    # Add 5 minutes to the date to set the deferred/delayed delivery to 5 minutes later (change to the number you want between the sendings)
+    $date = $date.AddMinutes(5)
+} 
+
+
+$mail = $null
+$Outlook = $null
+```
