@@ -122,6 +122,42 @@ If you need to change the default account to use with Outlook:
 $Mail.SendUsingAccount = $ol.Session.Accounts | where {$_.DisplayName -eq $FromMail}
 ```
 
+**NOTE:** The above line is to use a different account, not a different profile. If you want to be able to open Outlook with a specific profiles, you need to get the list of profiles from the local registry (or if you know the name of your profile you can use it as well hard coded in your script), and then open your Outlook session using ``` $Outlook.Session.Logon("Profile Name") ``` 
+
+Here's a script to list all the accounts under each profile by [Jeremy Corbello](https://social.technet.microsoft.com/profile/jacorbello/?ws=usercard-mini) [from an answer to the Microsoft communities](https://social.technet.microsoft.com/Forums/ie/en-US/c9b80a2c-9775-4299-a348-1faa16757b68/retrieve-outlook-info-account-from-multi-profile?forum=winserverpowershell) :
+
+```powershell
+$profiles = (Get-ChildItem HKCU:\Software\Microsoft\Office\16.0\Outlook\Profiles).PSChildName
+
+foreach ($profile in $profiles) {
+    $Outlook = New-Object -ComObject Outlook.Application
+    $Outlook.Session.Logon("$profile")
+    $NameSpace = $ol.GetNamespace("MAPI")
+    $NameSpace.Accounts | ft Displayname,Username,SMTPAddress -AutoSize
+    } 
+
+```
+
+So before sending a mail, and if you don't have Outlook already open, just after creating your Outlook COM object in PowerShell, open the session:
+
+```powershell
+$Outlook = New-Object -ComObject Outlook.Application
+$Outlook.Session.Logon("Outlook Profile 01")
+
+$mail = $Outlook.CreateItem(0)
+
+# or to open from a template (MSG or OFT) - the below seems to add the Outlook signature:
+
+$mail = $Outlook.CreateItemFromTemplate("path to the template - can be an OFT or a MSG")
+
+# or to open from a MSG e-mail, similar to opening from a template like above - doesn't seem to add the Outlook signature:
+
+$mail = $Outlook.Session.OpenSharedItem("path to the MSG file")
+
+```
+
+
+
 And finally if you want to Quit Outlook and cleanup your variable:
 
 - Quit Outlook (no need if you want to keep Outlook opened):
