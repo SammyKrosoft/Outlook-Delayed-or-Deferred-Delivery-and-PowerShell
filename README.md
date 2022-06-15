@@ -77,8 +77,7 @@ $date = $date.AddMinutes(10)
 $mail.DeferredDeliveryTime = $date
 ```
 
-Another example, full script:
-===============================
+## Another example, full script to send a message through Outlook automation with PowerShell with a delivery 10 minutes from the time user sent the message 
 
 ```powershell
 $ol = New-Object -comObject Outlook.Application 
@@ -110,19 +109,19 @@ $inspector.Display()
 $draft.Send()
 ```
 
-To change the default account:
+If you need to change the default account to use with Outlook:
 
 ```powershell
 $Mail.SendUsingAccount = $ol.Session.Accounts | where {$_.DisplayName -eq $FromMail}
 ```
 
-References:
+## References:
+
 [Create Outlook email draft using PowerShell](https://stackoverflow.com/questions/1453723/create-outlook-email-draft-using-powershell)
 
 [Delay or schedule sending email messages](https://support.microsoft.com/en-us/office/delay-or-schedule-sending-email-messages-026af69f-c287-490a-a72f-6c65793744ba)
 
-To use an OFT (Outlook Offline Template)
-=========================================
+## To use an OFT (Outlook Offline Template)
 
 ```powershell
  $PathToOft = "c:\temp\Bulkmessage001.oft"
@@ -141,8 +140,7 @@ To use an OFT (Outlook Offline Template)
  }
 ```
 
-Putting all the above together: Script sample to send an e-mail from a .MSG or .OFT template to several recipients (DLs for example), adding 5 minutes between each sending.
-======================================================================================================================================================
+## Putting all the above together: Script sample to send an e-mail from a .MSG or .OFT template to several recipients (DLs for example), adding 5 minutes between each sending.
 
 ```powershell
 cls
