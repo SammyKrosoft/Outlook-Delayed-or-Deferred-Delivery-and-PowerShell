@@ -44,7 +44,9 @@ Note the number changing if we remove 2 of the addresses (and commas):
 ![image](https://user-images.githubusercontent.com/33433229/173739956-0577c866-eb98-4e34-add8-3b5c1aa38cb3.png)
 
 -	And check in Outlook’s Outbox – the first message is sent immediately, and the others will be sent on the interval set on the form 
+
 NOTE: the “Sent” date you see on the Outbox will be the current date and time, but the delivery is deferred by the number of minutes you set on the form
+
 NOTE2: if you open one of these messages, it won’t be processed anymore – you will have to click “Send” to put them back in the Outlook Outbox processing queue.
 
 ![image](https://user-images.githubusercontent.com/33433229/173739981-3bf34a29-5ea8-4df9-9584-60b3e2d564fe.png)
