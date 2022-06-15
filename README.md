@@ -138,7 +138,7 @@ foreach ($profile in $profiles) {
 
 ```
 
-So before sending a mail, and if you don't have Outlook already open, just after creating your Outlook COM object in PowerShell, open the session:
+So before sending a mail, and if you don't have Outlook already open, just after creating your Outlook COM object in PowerShell, open the session using a profile name either manually as shown below, or from the registry as shown above:
 
 ```powershell
 $Outlook = New-Object -ComObject Outlook.Application
