@@ -1,5 +1,7 @@
 # Outlook Delayed Delivery
 
+## Intro
+
 This repository gives information and links about Oultook delayed delivery (sending messages but asking Outlook to process these at a later date/time). 
 
 Below are a couple articles links and extracts about the behavior difference between sending messages with delayed delivery on Outlook configured with cache mode, and on Outlook configured without cache mode (aka online mode).
@@ -14,6 +16,7 @@ Finally, this repository contains a complete PowerShell script with a Graphical 
 
 Some details and screenshots about this WPF GUI Outlook automation script [can be found on the README_Outlook_BroadcastInterface.md](https://github.com/SammyKrosoft/Outlook-PowerShell-send-mail-delay/blob/main/README_Outlook_BroadCastInterface.md)
 
+## Details
 
 [From Stilstick article](https://www.slipstick.com/outlook/delay-sending-message-outlook-closed/)
 
@@ -42,6 +45,8 @@ Optionally, the script allows you to add an attachment at the time of sending to
 
 The script can easily be scheduled in Windows Task Scheduler and can be configured with a recurrence pattern.
 ```
+
+## Some code samples
 
 [From StackOverflow](https://stackoverflow.com/questions/14809023/sending-defer-message-delivery-and-change-default-account-using-powershell)
 
