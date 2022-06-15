@@ -46,6 +46,13 @@ Optionally, the script allows you to add an attachment at the time of sending to
 The script can easily be scheduled in Windows Task Scheduler and can be configured with a recurrence pattern.
 ```
 
+## Using PowerShell to automate Outlook
+
+Here's a nice, complete and simple to understand process to user PowerShell with Outlook:
+
+https://community.spiceworks.com/how_to/150253-send-mail-from-powershell-using-outlook
+
+
 ## Some code samples
 
 [From StackOverflow](https://stackoverflow.com/questions/14809023/sending-defer-message-delivery-and-change-default-account-using-powershell)
@@ -113,6 +120,24 @@ If you need to change the default account to use with Outlook:
 
 ```powershell
 $Mail.SendUsingAccount = $ol.Session.Accounts | where {$_.DisplayName -eq $FromMail}
+```
+
+And finally if you want to Quit Outlook and cleanup your variable:
+
+- Quit Outlook (no need if you want to keep Outlook opened):
+
+```powershell
+$Outlook.Quit()
+```
+
+- Cleanup your variable from the COM object to free up memory
+
+It's not enough to set the $Outlook variable to $null, the below 3 code lines is a common practice used to remove a variable containing a COM object:
+
+```powershell
+[System.Runtime.Interopservices.Marshal]::ReleaseComObject($Outlook) | Out-Null
+[System.GC]::Collect()
+[System.GC]::WaitForPendingFinalizers()
 ```
 
 ### References:
