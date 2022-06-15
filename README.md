@@ -115,7 +115,7 @@ If you need to change the default account to use with Outlook:
 $Mail.SendUsingAccount = $ol.Session.Accounts | where {$_.DisplayName -eq $FromMail}
 ```
 
-## References:
+### References:
 
 [Create Outlook email draft using PowerShell](https://stackoverflow.com/questions/1453723/create-outlook-email-draft-using-powershell)
 
