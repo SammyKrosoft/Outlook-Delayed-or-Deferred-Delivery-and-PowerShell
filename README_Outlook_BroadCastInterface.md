@@ -61,4 +61,4 @@ NOTE2: if you open one of these messages, it won’t be processed anymore – yo
 
 # Download (Right-Click - Save As)
 
-**Right-click Save As** ==> [Download Send Bulk E-mail PowerShell Script](https://raw.githubusercontent.com/SammyKrosoft/Outlook-PowerShell-send-mail-delay/main/Outlook_BroadCastInterface.ps1) <== **Right-click Save As**
+**Right-click *Save link as*** ==> [Download Send Bulk E-mail PowerShell Script](https://raw.githubusercontent.com/SammyKrosoft/Outlook-PowerShell-send-mail-delay/main/Outlook_BroadCastInterface.ps1) <== **Right-click *Save link As***
