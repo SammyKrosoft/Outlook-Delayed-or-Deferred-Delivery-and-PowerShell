@@ -1,5 +1,19 @@
-# Outlook-PowerShell-send-mail-delay
-Outlook PowerShell send mail delay
+# Outlook Delayed Delivery
+
+This repository gives information and links about Oultook delayed delivery (sending messages but asking Outlook to process these at a later date/time). 
+
+Below are a couple articles links and extracts about the behavior difference between sending messages with delayed delivery on Outlook configured with cache mode, and on Outlook configured without cache mode (aka online mode).
+
+Then I threw in a few links and PowerShell code samples about how to automate Outlook with Powershell to send a delayed message from a MSG or OFT template. First I show a few code samples to explain different parts of Outlook automation with Powershell (delayed delivery, creating new e-mail from a MSG or OFT template, etc..).
+
+Finally, this repository contains a complete PowerShell script with a Graphical User Interface using WPF where users can:
+
+- put the e-mail addresses to send messages to
+- put the delay they want to set between Outlook messages sendings (delayed deliveries)
+- choose the template they want to use to send these messages
+
+Some details and screenshots about this WPF GUI Outlook automation script [can be found on the README_Outlook_BroadcastInterface.md](https://github.com/SammyKrosoft/Outlook-PowerShell-send-mail-delay/blob/main/README_Outlook_BroadCastInterface.md)
+
 
 [From Stilstick article](https://www.slipstick.com/outlook/delay-sending-message-outlook-closed/)
 
