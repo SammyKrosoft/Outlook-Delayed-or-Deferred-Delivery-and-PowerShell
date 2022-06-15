@@ -35,6 +35,10 @@ Note the number changing if we remove 2 of the addresses (and commas):
 
 ![image](https://user-images.githubusercontent.com/33433229/173739914-ad81349c-711c-46a1-9642-6f8edf6170ec.png)
 
+- Also, while the script runs to send the deferred delivery messages, you'll see some information regarding each message sent on the underlying Powershell window:
+
+![image](https://user-images.githubusercontent.com/33433229/173851840-98817ea3-d243-4355-b83b-0b71e400c67c.png)
+
 - After execution, the interface returns to an active state:
 
 ![image](https://user-images.githubusercontent.com/33433229/173739956-0577c866-eb98-4e34-add8-3b5c1aa38cb3.png)
