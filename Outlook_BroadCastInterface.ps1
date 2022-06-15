@@ -219,7 +219,6 @@ $wpf.btnSelectFile.add_Click({
 
 $wpf.btnSendEmail.add_click({
     
-    #Send_Emails -EmailsList $global:Emails -DelayBetweenMails $wpf.txtDelayMinutes.text -MSGFile $(("""") + $($wpf.txtTemplateFilePath.Text) + (""""))
     $wpf.lblWait.Visibility = "Visible"
     $wpf.$FormName.IsEnabled = $false
     $wpf.$FormName.Dispatcher.Invoke("Render",[action][scriptblock]{})
