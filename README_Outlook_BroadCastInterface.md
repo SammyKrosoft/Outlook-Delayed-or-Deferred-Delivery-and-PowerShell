@@ -2,7 +2,7 @@
 
 **Download link at the end of this article (Right-click Save As to download the latest .ps1 version of this script)**
 
-Here's a GUI to help out sending multiple e-mails from a single template using the information from the Readme.md of the repository:
+Here's a GUI to help out sending multiple e-mails from a single template - for more information about how to use Outlook COM object with PowerShell to send e-mails, see the Readme.md on this repository.
 
 ![image](https://user-images.githubusercontent.com/33433229/173739480-fc9b5d8c-303b-4392-836e-83fd48bd0cd6.png)
 
