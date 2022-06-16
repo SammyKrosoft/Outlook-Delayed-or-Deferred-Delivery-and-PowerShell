@@ -43,7 +43,7 @@ Note the number changing if we remove 2 of the addresses (and commas):
 
 ![image](https://user-images.githubusercontent.com/33433229/173739956-0577c866-eb98-4e34-add8-3b5c1aa38cb3.png)
 
--	And check in Outlook’s Outbox – the first message is sent immediately, and the others will be sent on the interval set on the form 
+-	And check in Outlook’s Outbox – the first message is sent immediately, and the others will be sent on the interval set on the form, and will stay in the Outbox in the meantime. Remember, if these messages are being sent from an Outlook profile that's configured with cache mode, the client must remmain opened for the messages to be sent later, but if these messages are being sent from an Outlook profile that's **not** configured with cache mode (aka Online mode), you can close Outlook and the messages will be sent with the configured interval anyways.
 
 NOTE: the “Sent” date you see on the Outbox will be the current date and time, but the delivery is deferred by the number of minutes you set on the form
 
